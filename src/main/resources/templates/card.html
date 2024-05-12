@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--해당 문서가 영어로 작성되어있음을 나타냄-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--문자 인코딩 방식을 명시함-->
+    <title>Board</title>
+    <style>
+        .container{
+            width: 220px;
+            height: 310px;
+            transition : all 0.1s;
+            /*CSS만을 사용하여 애니메이션을 구현하는 방법 중 하나,
+            특정 CSS 속성값을 일정 시간동안 변경되도록 할 수 있는 속성*/
+            position: relative;
+            /*요소의 위치를 자기 자신을 기준으로 정함*/
+        }
+        .overlay {
+            position: absolute;
+            /*요소의 위치를 부모를 기준으로 정함*/
+            width: 220px;
+            height: 310px;
+            background: linear-gradient(105deg,
+            transparent 40%,
+            rgba(255, 219, 112, 0.8) 45%,
+            rgba(132, 50, 255, 0.6) 50%,
+            transparent 54%
+            );
+            /*두개 이상의 색이 직선을 따라 점진적으로 변화하는 이미지를 생성하는 함수*/
+            /*1.방향 또는 각도, 색상 그리고 정지점 1 ~ n*/
+            filter: brightness(1.2) opacity(0.8);
+            /*흐림 효과, 생상 변형등 그래픽 효과를 적용함*/
+            mix-blend-mode: color-dodge;
+            /*배경과 해당 요소의 내용물을 블렌딩하는 방법을 결정함*/
+            background-size: 150% 150%;
+            /*배경이미지 크기 조절*/
+            background-position: 100%;
+            /*배경이미지를 가장 오른쪽에 배치함*/
+            transition: all 0.1s;
+        }
+        .card{
+            width: 220px;
+            height: 310px;
+            background-image: url("/images/image01.jpg");
+            background-size: cover;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            //DOM이 로딩이 완료되는 이벤트가 발생할 때 다음과 같은 작업을 수행하도록 함
+            var container = document.querySelector('.container')
+            var overlay = document.querySelector('.overlay')
+            //DOM내의 container과 overlay 클래스의 객체를 얻음
+            container.addEventListener('mousemove', function (e){
+                var x = e.offsetX
+                var y = e.offsetY
+                var rotateY = -1/5 * x + 20
+                var rotateX = 4/30 * y - 20
+                //마우스의 위치를 구하고 구한 위치를 기반으로 카드가 얼마나 회전할 지 결정함
+                overlay.style.backgroundPosition = `${x/5 + y/5}%`
+                //마우스의 움직임에 따라 반짝이 효과의 위치를 결정함
+                overlay.style.filter = 'opacity(0.8)'
+                //반짝이 효과의 투명도를 지정함 1로 갈수록 불투명 해짐
+                container.style.transform = `perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
+            })
+            container.addEventListener('mouseout', function (e){
+                //overlay.style.filter = 'opacity(0)'
+                //마우스가 위에 있지 않을 때에는 반짝이 효과를 없앰
+                container.style.transform = 'perspective(350px) rotateY(0deg) rotateX(0deg)'
+            })
+        })
+    </script>
+</head>
+<body>
+<p th:text = "'안녕하세요. ' + ${data}">안녕하세요</p>
+<table>
+    <div class="container">
+        <div class="overlay"></div>
+        <div class="card"></div>
+    </div>
+</table>
+</p>
+</body>
+</html>
