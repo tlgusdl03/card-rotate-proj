@@ -3,23 +3,23 @@ package com.example.simple.proj.model;
 import java.util.Date;
 
 public class Comment {
-    private int id;
+    private Long id;
     private String content;
     private String author;
     private Date creationDate;
 
-    public Comment(int id, String content, String author, Date creationDate) {
+    public Comment(Long id, String content, String author, Date creationDate) {
         this.id = id;
         this.content = content;
         this.author = author;
         this.creationDate = creationDate;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
