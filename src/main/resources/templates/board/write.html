@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>게시글 작성</h1>
-<form action="#" th:action="@{/board/write}" th:object="${post}" method="post">
+<form action="view" th:action="@{/board/write}" th:object="${post}" method="post">
     <label for="title">제목</label>
     <input type="text" th:field="*{title}" id="title">
     <label for="author">작성자</label>
