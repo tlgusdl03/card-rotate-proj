@@ -2,6 +2,8 @@ package com.example.simple.proj.board;
 
 import com.example.simple.proj.model.Board;
 
+import java.util.List;
+
 public class BoardServiceImpl implements BoardService{
 
     private final BoardRepository boardRepository;
@@ -28,5 +30,10 @@ public class BoardServiceImpl implements BoardService{
     @Override
     public Board findBoard(Long boardId) {
         return boardRepository.findById(boardId);
+    }
+
+    @Override
+    public List<Board> findAllBoards() {
+        return boardRepository.findAll();
     }
 }
