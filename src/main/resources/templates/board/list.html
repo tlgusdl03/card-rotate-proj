@@ -17,13 +17,15 @@
     </thead>
     <tbody>
     <!-- 게시글 목록을 반복하여 사용하라는 thymleaf문법-->
-    <tr th:each="post : ${postList}">
-        <td th:text="${post.id}"></td>
-        <td><a th:href="@{/post/{id}(id=${post.id})}"></a></td>
-        <td th:text="${post.author}"></td>
+    <tr th:each="post : ${boards}">
+        <!-- 각 게시글의 uid를 경로로 하여 접근함 -->
+        <td><a href="item.html" th:href="@{/boards/{uid}(uid=${board.uid})}" th:text="${board.uid}">글 ID</a></td>
+        <td><a href="item.html" th:href="@{/boards/{uid}(uid=${board.uid})}" th:text="${board.subject}">제목</a></td>
+        <td th:text="${board.name}"></td>
+        <td th:text="${board.regdate}"></td>
     </tr>
     </tbody>
 </table>
-<button><a href="/board/write">글쓰기</a></button>
+<button><a href="/board/write" th:onclick="|location.href='@{/boards/add}'|">글쓰기</a></button>
 </body>
 </html>
