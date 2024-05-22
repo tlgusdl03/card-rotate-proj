@@ -3,14 +3,13 @@ package com.example.simple.proj.model;
 import java.util.Date;
 
 public class Board {
-    Long id;
-    Date createdTime = new Date();
-    User user;
-    String title;
-    String content;
+    private Long id;
+    private Date createdTime = new Date();
+    private String user;
+    private String title;
+    private String content;
 
-    public Board(Long id, Date createdTime, User user, String title, String content) {
-        this.id = id;
+    public Board(Date createdTime, String user, String title, String content) {
         this.createdTime = createdTime;
         this.user = user;
         this.title = title;
@@ -33,11 +32,11 @@ public class Board {
         this.createdTime = createdTime;
     }
 
-    public User getUser() {
+    public String getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(String user) {
         this.user = user;
     }
 

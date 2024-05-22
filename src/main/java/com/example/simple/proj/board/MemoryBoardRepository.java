@@ -18,25 +18,25 @@ public class MemoryBoardRepository implements BoardRepository{
         store.put(board.getId(), board);
     }
 
-    @Override
-    public void delete(Long boardId) {
-        store.remove(boardId);
-    }
-
-    @Override
-    public void update(Long boardId, Board newBoard) {
-        if(store.containsKey(boardId)){
-            store.put(boardId, newBoard);
-        }
-        else {
-            throw new NoSuchElementException("board with Id =" + boardId + "not found");
-        }
-    }
-
-    @Override
-    public Board findById(Long boardId) {
-        return store.get(boardId);
-    }
+//    @Override
+//    public void delete(Long boardId) {
+//        store.remove(boardId);
+//    }
+//
+//    @Override
+//    public void update(Long boardId, Board newBoard) {
+//        if(store.containsKey(boardId)){
+//            store.put(boardId, newBoard);
+//        }
+//        else {
+//            throw new NoSuchElementException("board with Id =" + boardId + "not found");
+//        }
+//    }
+//
+//    @Override
+//    public Board findById(Long boardId) {
+//        return store.get(boardId);
+//    }
 
     @Override
     public List<Board> findAll() {

@@ -1,31 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>게시글 목록</title>
+    <title>Board List</title>
 </head>
 <body>
-<h1> 게시글 목록 </h1>
-<table>
+<h1>게시물 목록</h1>
+<table border="1">
     <thead>
     <tr>
-        <th>게시글 번호</th>
-        <th>제목</th>
+        <th>ID</th>
         <th>작성자</th>
-        <th>작성 날짜</th>
+        <th>제목</th>
+        <th>작성 시간</th>
     </tr>
     </thead>
     <tbody>
-    <!-- 게시글 목록을 반복하여 사용하라는 thymleaf문법-->
-    <tr th:each="post : ${boards}">
-        <!-- 각 게시글의 uid를 경로로 하여 접근함 -->
-        <td><a href="item.html" th:href="@{/boards/{uid}(uid=${board.uid})}" th:text="${board.uid}">글 ID</a></td>
-        <td><a href="item.html" th:href="@{/boards/{uid}(uid=${board.uid})}" th:text="${board.subject}">제목</a></td>
-        <td th:text="${board.name}"></td>
-        <td th:text="${board.regdate}"></td>
+    <tr th:each="board : ${boards}">
+        <td th:text="${board.id}">1</td>
+        <td th:text="${board.user}">작성자</td>
+        <td th:text="${board.title}">제목</td>
+        <td th:text="${#dates.format(board.createdTime, 'yyyy-MM-dd HH:mm:ss')}">작성 시간</td>
     </tr>
     </tbody>
 </table>
-<button><a href="/board/write" th:onclick="|location.href='@{/boards/add}'|">글쓰기</a></button>
+<a href="/boards/new">새 게시물 작성</a>
 </body>
 </html>
