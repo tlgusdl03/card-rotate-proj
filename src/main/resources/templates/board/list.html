@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <title>Board List</title>
 </head>
 <body>
-<h1>게시물 목록</h1>
-<table border="1">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>작성자</th>
-        <th>제목</th>
-        <th>작성 시간</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="board : ${boards}">
-        <td th:text="${board.id}">1</td>
-        <td th:text="${board.user}">작성자</td>
-        <td th:text="${board.title}">제목</td>
-        <td th:text="${#dates.format(board.createdTime, 'yyyy-MM-dd HH:mm:ss')}">작성 시간</td>
-    </tr>
-    </tbody>
-</table>
-<a href="/boards/new">새 게시물 작성</a>
+
+<div class="container">
+    <h1>게시물 목록</h1>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>작성자</th>
+            <th>제목</th>
+            <th>작성 시간</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="board : ${boards}">
+            <td th:text="${board.id}">1</td>
+            <td th:text="${board.user}">작성자</td>
+            <td>
+                <a th:href="@{/boards/(boardId=${board.id})}"
+                   th:text="${board.title}">제목
+                </a>
+            </td>
+            <td th:text="${#dates.format(board.createdTime, 'yyyy-MM-dd HH:mm:ss')}">작성 시간</td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/boards/new">새 게시물 작성</a>
+</div>
 </body>
 </html>

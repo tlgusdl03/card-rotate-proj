@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <meta charset="UTF-8">
     <title>게시물 보기</title>
 </head>
 <body>
-<h1 th:text="${page.board}">게시물 보기</h1>
-<div>
+<div class="container">
+    <h1 th:text="${page.board}">게시물 보기</h1>
     <h2 th:text="${board.title}">게시물 제목</h2>
     <div th:text="${board.author}">작성자</div>
     <div th:text="${board.regdate}">작성일</div>
     <p th:text="${board.content}">게시물 내용</p>
 </div>
-<a href="/list">목록</a>
+<a href="/bo">목록</a>
 </body>
 </html>
