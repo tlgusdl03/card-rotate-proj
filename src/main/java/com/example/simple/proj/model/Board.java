@@ -9,8 +9,7 @@ public class Board {
     private String title;
     private String content;
 
-    public Board(Date createdTime, String user, String title, String content) {
-        this.createdTime = createdTime;
+    public Board(String user, String title, String content) {
         this.user = user;
         this.title = title;
         this.content = content;

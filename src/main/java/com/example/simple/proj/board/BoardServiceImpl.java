@@ -2,6 +2,7 @@ package com.example.simple.proj.board;
 
 import com.example.simple.proj.model.Board;
 
+import java.util.Date;
 import java.util.List;
 
 public class BoardServiceImpl implements BoardService{
@@ -10,6 +11,7 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public void post(Board board) {
+        board.setCreatedTime(new Date());
         boardRepository.save(board);
     }
 
