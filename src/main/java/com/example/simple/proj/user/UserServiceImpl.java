@@ -3,17 +3,18 @@ package com.example.simple.proj.user;
 import com.example.simple.proj.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
 public class UserServiceImpl implements UserService{
 
-    private final UserRepository userRepository;
-
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private final UserRepository userRepository = new MemoryUserRepository();
 
     @Override
-    public void join(User user) {
+    public void join(String id, String email, String password) {
+        if(findUser(id)!=null){
+
+        }
+        User user = new User(id, email, password);
         userRepository.save(user);
     }
 
@@ -28,9 +29,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User findUser(Long UserId) {
+    public User findUser(String UserId) {
         return userRepository.findById(UserId);
     }
-
-
 }
