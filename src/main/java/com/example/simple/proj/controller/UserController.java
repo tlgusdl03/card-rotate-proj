@@ -19,8 +19,8 @@ public class UserController {
     }
 
     @PostMapping("user/sign_up/request")
-    public String signUpRequest(@ModelAttribute("id") String id, @ModelAttribute("email") String email, @ModelAttribute("password") String password){
-        userService.join(id, email, password);
+    public String signUpRequest(@ModelAttribute("id") String id, @ModelAttribute("name") String name, @ModelAttribute("email") String email, @ModelAttribute("password") String password){
+        userService.join(name, email, password);
         return "redirect:/";
     }
 

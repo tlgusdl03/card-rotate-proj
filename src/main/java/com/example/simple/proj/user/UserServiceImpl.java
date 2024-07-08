@@ -1,20 +1,16 @@
 package com.example.simple.proj.user;
 
 import com.example.simple.proj.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
+
+import java.util.Map;
 
 public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository = new MemoryUserRepository();
 
     @Override
-    public void join(String id, String email, String password) {
-        if(findUser(id)!=null){
-
-        }
-        User user = new User(id, email, password);
+    public void join(String name, String email, String password) {
+        User user = new User(name, email, password);
         userRepository.save(user);
     }
 
@@ -29,7 +25,15 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User findUser(String UserId) {
+    public User findUser(Long UserId) {
         return userRepository.findById(UserId);
     }
+
+    @Override
+    public Map<Long, User> findUsers() {
+        return Map.of();
+    }
+
+    @Override
+    public Map<Long, User> findAll() { return userRepository.findAll(); }
 }

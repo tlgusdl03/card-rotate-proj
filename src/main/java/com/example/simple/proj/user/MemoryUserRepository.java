@@ -35,4 +35,7 @@ public class MemoryUserRepository implements UserRepository{
     public User findById(Long UserId) {
         return store.get(UserId);
     }
+
+    @Override
+    public Map<Long, User> findAll() { return store; }
 }
