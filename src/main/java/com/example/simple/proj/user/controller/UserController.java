@@ -23,29 +23,34 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id){
-        Optional<User> user = userService.findUser(id);
-        return user.isPresent() ? ResponseEntity.ok(user.get()) : ResponseEntity.notFound().build();
+        User user = userService.findUser(id);
+        if(user == null){
+            return ResponseEntity.notFound().build();
+        }
+        else{
+            return ResponseEntity.ok(user);
+        }
     }
 
-    @GetMapping("user/sign_up/form")
-    public String signUpForm(){
-        return "user/sign_up/form";
+    @PostMapping
+    public User createUser(@RequestBody User user){
+        return userService.join(user);
     }
 
-    @PostMapping("user/sign_up/request")
-    public String signUpRequest(@ModelAttribute("id") String id, @ModelAttribute("name") String name, @ModelAttribute("email") String email, @ModelAttribute("password") String password){
-        userService.join(name, email, password);
-        return "redirect:/";
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user){
+        User updatedUser = userService.edit(id, user);
+        if(updatedUser == null){
+            return ResponseEntity.notFound().build();
+        }
+        else{
+            return ResponseEntity.ok(updatedUser);
+        }
     }
 
-    @GetMapping("user/sign_in/form")
-    public String signInForm(){
-        return "user/sign_in/form";
+    @DeleteMapping("/{id}")
+    public ResponseEntity<User> deleteUser(@PathVariable Long id){
+        userService.withdraw(id);
     }
-
-//    @PostMapping("user/sign_in/request")
-//    public String signInRequest(@ModelAttribute("id") String id, @ModelAttribute("password") String password){
-//        if(userService.findUser())
-//    }
 
 }
