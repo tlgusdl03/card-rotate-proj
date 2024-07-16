@@ -1,4 +1,4 @@
-package com.example.simple.proj.model;
+package com.example.simple.proj.comment.model;
 
 import java.util.Date;
 

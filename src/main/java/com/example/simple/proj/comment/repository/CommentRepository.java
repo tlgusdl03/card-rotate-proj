@@ -1,9 +1,6 @@
-package com.example.simple.proj.comment;
+package com.example.simple.proj.comment.repository;
 
-import com.example.simple.proj.model.Comment;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.example.simple.proj.comment.model.Comment;
 
 public interface CommentRepository {
     void save(Comment comment);

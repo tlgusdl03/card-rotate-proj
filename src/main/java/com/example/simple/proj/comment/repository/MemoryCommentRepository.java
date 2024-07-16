@@ -1,12 +1,12 @@
-package com.example.simple.proj.comment;
+package com.example.simple.proj.comment.repository;
 
-import com.example.simple.proj.model.Comment;
+import com.example.simple.proj.comment.model.Comment;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-public class MemoryCommentRepository implements CommentRepository{
+public class MemoryCommentRepository implements CommentRepository {
     private static Map<Long, Comment> store = new HashMap<>();
 
     @Override

@@ -1,8 +1,9 @@
-package com.example.simple.proj.comment;
+package com.example.simple.proj.comment.service;
 
-import com.example.simple.proj.model.Comment;
+import com.example.simple.proj.comment.repository.CommentRepository;
+import com.example.simple.proj.comment.model.Comment;
 
-public class CommentServiceImpl implements CommentService{
+public class CommentServiceImpl implements CommentService {
 
     private final CommentRepository commentRepository;
 

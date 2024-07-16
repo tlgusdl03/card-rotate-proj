@@ -1,11 +1,13 @@
-package com.example.simple.proj.board;
+package com.example.simple.proj.board.service;
 
-import com.example.simple.proj.model.Board;
+import com.example.simple.proj.board.repository.MemoryBoardRepository;
+import com.example.simple.proj.board.repository.BoardRepository;
+import com.example.simple.proj.board.model.Board;
 
 import java.util.Date;
 import java.util.List;
 
-public class BoardServiceImpl implements BoardService{
+public class BoardServiceImpl implements BoardService {
 
     private final BoardRepository boardRepository = new MemoryBoardRepository();
 

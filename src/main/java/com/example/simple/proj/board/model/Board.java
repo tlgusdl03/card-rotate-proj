@@ -1,4 +1,4 @@
-package com.example.simple.proj.model;
+package com.example.simple.proj.board.model;
 
 import java.util.Date;
 

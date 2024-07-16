@@ -1,6 +1,6 @@
-package com.example.simple.proj.board;
+package com.example.simple.proj.board.service;
 
-import com.example.simple.proj.model.Board;
+import com.example.simple.proj.board.model.Board;
 
 import java.util.List;
 
