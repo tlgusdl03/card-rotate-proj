@@ -1,6 +1,6 @@
 //package com.example.simple.proj.user;
 //
-//import com.example.simple.proj.model.User;
+//import com.example.simple.proj.user.model.User;
 //import org.assertj.core.api.Assertions;
 //import org.junit.jupiter.api.BeforeEach;
 //import org.junit.jupiter.api.DisplayName;

@@ -1,7 +1,7 @@
 //package com.example.simple.proj.board;
 //
-//import com.example.simple.proj.model.Board;
-//import com.example.simple.proj.model.User;
+//import com.example.simple.proj.board.model.Board;
+//import com.example.simple.proj.user.model.User;
 //import org.assertj.core.api.Assertions;
 //import org.junit.jupiter.api.BeforeEach;
 //import org.junit.jupiter.api.DisplayName;

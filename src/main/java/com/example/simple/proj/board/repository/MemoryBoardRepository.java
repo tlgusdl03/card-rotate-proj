@@ -1,11 +1,11 @@
-package com.example.simple.proj.board;
+package com.example.simple.proj.board.repository;
 
-import com.example.simple.proj.model.Board;
+import com.example.simple.proj.board.model.Board;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class MemoryBoardRepository implements BoardRepository{
+public class MemoryBoardRepository implements BoardRepository {
 
     private static final AtomicLong counter = new AtomicLong(0);
     private static final Map<Long, Board> store = new HashMap<>();

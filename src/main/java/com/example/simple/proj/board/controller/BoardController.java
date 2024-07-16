@@ -1,8 +1,8 @@
-package com.example.simple.proj.controller;
+package com.example.simple.proj.board.controller;
 
-import com.example.simple.proj.board.BoardService;
-import com.example.simple.proj.board.BoardServiceImpl;
-import com.example.simple.proj.model.Board;
+import com.example.simple.proj.board.service.BoardService;
+import com.example.simple.proj.board.service.BoardServiceImpl;
+import com.example.simple.proj.board.model.Board;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

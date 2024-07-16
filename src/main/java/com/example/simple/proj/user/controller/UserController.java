@@ -1,17 +1,31 @@
-package com.example.simple.proj.controller;
+package com.example.simple.proj.user.controller;
 
-import com.example.simple.proj.model.User;
-import com.example.simple.proj.user.UserService;
-import com.example.simple.proj.user.UserServiceImpl;
+import com.example.simple.proj.user.model.User;
+import com.example.simple.proj.user.service.UserService;
+import com.example.simple.proj.user.service.UserServiceImpl;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
+@RequestMapping("/users")
 public class UserController {
+
     private final UserService userService = new UserServiceImpl();
+
+    @GetMapping
+    public List<User> getAllUsers(){
+        return userService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id){
+        Optional<User> user = userService.findUser(id);
+        return user.isPresent() ? ResponseEntity.ok(user.get()) : ResponseEntity.notFound().build();
+    }
 
     @GetMapping("user/sign_up/form")
     public String signUpForm(){
