@@ -12,26 +12,29 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository = new MemoryUserRepository();
 
     @Override
-    public User join(String name, String email, String password) {
-        User user = new User();
-        user.setName(name);
-        user.setEmail(email);
-        user.setPassword(password);
+    public User join(User user) {
         return userRepository.save(user);
     }
 
     @Override
-    public Optional<User> edit(User newUser) {
-        userRepository.save(newUser);
+    public User edit(Long UserId, User user) {
+        User newUser = findUser(UserId);
+        if(newUser != null) {
+            newUser.setName(user.getName());
+            newUser.setEmail(user.getEmail());
+            newUser.setPassword(user.getPassword());
+            return userRepository.save(newUser);
+        }
+        return null;
     }
 
     @Override
-    public boolean withdraw(Long UserId) {
-        return userRepository.delete(UserId);
+    public void withdraw(Long UserId) {
+         userRepository.delete(UserId);
     }
 
     @Override
-    public Optional<User> findUser(Long UserId) {
+    public User findUser(Long UserId) {
         return userRepository.findById(UserId);
     }
 
