@@ -25,8 +25,8 @@ public class MemoryUserRepository implements UserRepository {
     }
 
     @Override
-    public Optional<User> findById(Long UserId) {
-        return Optional.ofNullable(store.get(UserId));
+    public User findById(Long UserId) {
+        return store.get(UserId);
     }
 
     @Override

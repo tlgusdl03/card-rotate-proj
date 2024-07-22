@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <title>User List</title>
+    <script>
+        function deleteUser(userId) {
+            fetch(`users/delete/${userId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.reload();
+                    } else {
+                        alert('Failed to delete user');
+                    }
+                });
+        }
+    </script>
+</head>
+<body>
+<h1>User List</h1>
+<a href="/users/new">Add New User</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+            <a th:href="@{users/edit/{id}(id=${user.id})}">Edit</a>
+            <a href="#" th:onclick="'deleteUser(' + ${user.id} + '); return false;'">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
